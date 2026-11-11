@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#3C2415" />
+  <meta name="application-name" content="RUNAM" />
+  <meta name="apple-mobile-web-app-title" content="Phiếu giao hàng" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="64x64" href="/icons/favicon.png" />
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+  <title>RUNAM | Phiếu giao hàng online/offline</title>
+  <style>
+    @keyframes blink-online { 0%,100%{opacity:1} 50%{opacity:.25} }
+    .dot-online{animation:blink-online 1s ease-in-out infinite}
+    :root{--main:#3C2415;--beige:#FFFBEB;--bg:#FDFBF7;--safe-top:env(safe-area-inset-top,0px)}
+    *{box-sizing:border-box;margin:0;padding:0} body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:#1F2937;min-height:100vh;padding-top:var(--safe-top);-webkit-font-smoothing:antialiased}
+    .font-display{font-family:"Playfair Display",serif} button{cursor:pointer;font-family:inherit;border:none;background:none} input,select,textarea{font-family:inherit}
+    @media print{body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}body *{visibility:hidden!important}.print-card,.print-card *{visibility:visible!important}.no-print{display:none!important}.print-card{position:absolute!important;left:50%!important;top:0!important;transform:translateX(-50%)!important;box-shadow:none!important;border:none!important;margin:0!important}}
+    @media (max-width:640px) and (orientation:portrait){.mobile-company-header{flex-direction:column!important;align-items:stretch!important;gap:10px!important}.mobile-company-logo{align-self:center}.mobile-company-info{width:100%!important}.mobile-company-contact{flex-direction:column!important;gap:6px!important}.mobile-company-contact input{width:100%!important;min-width:0!important}.mobile-company-status{width:100%!important;align-items:stretch!important}.mobile-company-status>div:first-child{text-align:left!important}.mobile-company-status>div:last-child{justify-content:flex-start!important;flex-wrap:wrap}.customer-heading-row{align-items:flex-start!important}.customer-heading-row>div:nth-child(2){min-width:0!important}}
+    .nsx-date-wrap{position:relative;display:inline-block}.nsx-date-wrap input[type=date]{width:108px;height:36px;border-radius:8px;border:1px solid #d1d5db;background:#fffefe;padding:0 8px;font-size:13px;outline:none}.nsx-date-wrap input[type=date].empty-date{color:transparent}.nsx-date-placeholder{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:12px;color:#9ca3af;pointer-events:none}.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 20px;border-radius:9999px;font-size:13px;font-weight:600;z-index:200;box-shadow:0 8px 30px #0004}
+  </style>
+  <script src="/vendor/react.production.min.js"></script>
+  <script src="/vendor/react-dom.production.min.js"></script>
+  <script src="/offline-storage.js"></script>
+  <script src="/vendor/jsQR.js"></script>
+  <script src="/vendor/qrcode.js"></script>
+  <script src="/vendor/qrcode_UTF8.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+      addEventListener('load', () => navigator.serviceWorker.register('/sw.js', {updateViaCache:'none'}).catch(()=>{}));
+    }
+  </script>
+</head>
+<body>
+  <div id="root"><div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#FDFBF7;color:#3C2415;font-family:system-ui">Đang khởi động RUNAM…</div></div>
+  <script src="/app.js?v=qr4"></script>
+</body>
+</html>
